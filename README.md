@@ -24,10 +24,6 @@ Tested on Muse Pi v3.0 (SpacemiT K1, RVV 1.0) by OpenCV maintainer.
 - `vcompress` for batch corner extraction instead of per-lane bitmask scanning
 - `vlen`-adaptive via `vsetvl_e16m1` — works on any RVV 1.0 implementation (128/256/512-bit)
 
-**Impact:** The score-first pattern was adopted by OpenCV maintainers for other architectures:
-- [AVX2 port (PR #29038)](https://github.com/opencv/opencv/pull/29038)
-- [ARM NEON port (PR #29039)](https://github.com/opencv/opencv/pull/29039)
-
 ### [PR #29197](https://github.com/opencv/opencv/pull/29197) — Deferred u8mf2 widening for FAST pre-screen (Merged, OpenCV 4.14.0)
 
 Follow-up micro-optimization: defer the `vzext` (u8→i16 widening) in the pre-screen phase until after the quick-reject check. Since ~70-80% of pixel-strips are rejected at the default threshold, this saves 5 unnecessary widen operations per rejected strip.
